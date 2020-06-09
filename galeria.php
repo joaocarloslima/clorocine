@@ -1,5 +1,40 @@
 <?php include "cabecalho.php" ?>
 
+<?php
+
+$filme1 = [
+    "titulo" => "Vingadores",
+    "nota" => 9.9,
+    "sinopse" => "Depois dos eventos devastadores de “Guerra do Infinito”, o universo está em ruínas. Com a ajuda dos aliados que restam, os Vingadores juntam-se mais uma vez para tentar desfazer as ações de Thanos e restaurar a ordem ao universo.",
+    "poster" => "https://image.tmdb.org/t/p/w300/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg"
+];
+
+$filme2 = [
+    "titulo" => "Ad Astra",
+    "nota" => 6.2,
+    "sinopse" => "O astronauta Roy McBride viaja para lá dos limites do sistema solar para tentar encontrar o seu pai desaparecido e decifrar o mistério que ameaça a sobrevivência do planeta Terra.",
+    "poster" => "https://image.tmdb.org/t/p/w300/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg"
+];
+
+$filme3 = [
+    "titulo" => "O auto da compadecida",
+    "nota" => 10.0,
+    "sinopse" => "As aventuras de João Grilo (Matheus Natchergaele), um sertanejo pobre e mentiroso, e Chicó (Selton Mello), o mais covarde dos homens. Ambos lutam pelo pão de cada dia e atravessam por vários episódios enganando a todos da pequena cidade em que vivem.",
+    "poster" => "https://image.tmdb.org/t/p/w300/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg"
+];
+
+$filme4 = [
+    "titulo" => "Star Wars: Episódio IX - A Ascensão de Skywalker",
+    "nota" => 8.1,
+    "sinopse" => "Uma jornada épica para uma galáxia muito, muito distante. A fascinante conclusão da saga Skywalker, onde vão nascer novas lendas e a batalha final pela liberdade ainda está para chegar.",
+    "poster" => "https://image.tmdb.org/t/p/w300/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg"
+];
+
+$filmes = [$filme1, $filme2, $filme3, $filme4];
+
+
+?>
+
 <body>
 
     <nav class="nav-extended purple lighten-3">
@@ -22,84 +57,28 @@
     </nav>
 
     <div class="row">
-        <div class="col s3">
+
+    <?php foreach($filmes as $filme) : ?>
+    <div class="col s3">
             <div class="card hoverable">
                 <div class="card-image">
-                    <img src="https://image.tmdb.org/t/p/w300/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg">
+                    <img src="<?= $filme["poster"] ?>">
                     <a class="btn-floating halfway-fab waves-effect waves-light red">
                         <i class="material-icons">favorite_border</i>
-                    </a>
-                </div>
-                <div class="card-content">
-                    <p class="valign-wrapper">
-                        <i class="material-icons amber-text">star</i> 9,7
-                    </p>
-                    <span class="card-title">Vingadores</span>
-                    <p>Depois dos eventos devastadores de “Guerra do Infinito”, o universo está em ruínas. Com a ajuda dos aliados que restam, os Vingadores juntam-se mais uma vez para tentar desfazer as ações de Thanos e restaurar a ordem ao universo.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col s3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img src="https://image.tmdb.org/t/p/w300/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red">
-                        <i class="material-icons">favorite_border</i>
-                    </a>
-                </div>
-                <div class="card-content">
-                    <p class="valign-wrapper">
-                        <i class="material-icons amber-text">star</i> 6,2
-                    </p>
-                    <span class="card-title">Ad Astra</span>
-
-                    <p>O astronauta Roy McBride viaja para lá dos limites do sistema solar para tentar encontrar o seu pai desaparecido e decifrar o mistério que ameaça a sobrevivência do planeta Terra.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col s3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img src="https://image.tmdb.org/t/p/w300/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red">
-                        <i class="material-icons">favorite_border</i>
-                    </a>
-                </div>
-                <div class="card-content">
-                    <p class="valign-wrapper">
-                        <i class="material-icons amber-text">star</i> 9,9
-                    </p>
-                    <span class="card-title">O Auto da Compadecida</span>
-
-                    <p>As aventuras de João Grilo (Matheus Natchergaele), um sertanejo pobre e mentiroso, e Chicó (Selton Mello), o mais covarde dos homens. Ambos lutam pelo pão de cada dia e atravessam por vários episódios enganando a todos da pequena cidade em que vivem.</p>
-                </div>
-            </div>
-
-        </div>   
-        
-        <div class="col s3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img src="https://image.tmdb.org/t/p/w300/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red">
-                        <i class="material-icons">favorite_border</i>
+                        <?= $filme["nota"] ?>
                     </a>
                 </div>
                 <div class="card-content">
                     <p class="valign-wrapper">
                         <i class="material-icons amber-text">star</i> 8,1
                     </p>
-                    <span class="card-title">Star Wars: Episódio IX - A Ascensão de Skywalker </span>
+                    <span class="card-title"><?= $filme["titulo"] ?></span>
 
-                    <p>Uma jornada épica para uma galáxia muito, muito distante. A fascinante conclusão da saga Skywalker, onde vão nascer novas lendas e a batalha final pela liberdade ainda está para chegar.</p>
+                    <p><?= $filme["sinopse"] ?></p>
                 </div>
             </div>
-
-        </div>        
+        </div>   
+        <?php endforeach ?>     
     </div>
 
     </div>
