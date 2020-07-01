@@ -76,7 +76,7 @@ $filmes = $controller->index();
           }
         })
         .catch( error => {
-          console.error('erro ao favoritar')
+          M.toast({html: 'Erro ao favoritar'})
         })
       });
     });
