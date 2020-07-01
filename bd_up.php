@@ -37,8 +37,7 @@ else
     echo "\nerro ao inserir filmes\n"; 
 
 
-    $sql = "INSERT INTO filmes (id, titulo, poster, sinopse, nota) VALUES (
-        1,
+    $sql = "INSERT INTO filmes (titulo, poster, sinopse, nota) VALUES (
         'O Auto da Compadecida',
         'https://image.tmdb.org/t/p/w300/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg',
         'As aventuras de João Grilo (Matheus Natchergaele), um sertanejo pobre e mentiroso, e Chicó (Selton Mello), o mais covarde dos homens. Ambos lutam pelo pão de cada dia e atravessam por vários episódios enganando a todos da pequena cidade em que vivem.',
@@ -50,12 +49,4 @@ echo "\nfilmes inseridos com sucesso\n";
 else 
 echo "\nerro ao inserir filmes\n";
 
-
-
-$sql = "INSERT INTO filmes (id, titulo, poster, sinopse, nota) VALUES ( 2, 'Thor', 'thos.jpg', 'um filme bem nosta', 7)";
-
-if ($bd->exec($sql)) 
-echo "\nfilmes inseridos com sucesso\n"; 
-else 
-echo "\nerro ao inserir filmes\n";
 
