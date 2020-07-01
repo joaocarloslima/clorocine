@@ -1,6 +1,6 @@
 <?php
 
-$bd = new SQLite3("filmes.db");
+$bd = new SQLite3("db/filmes.db");
 
 $sql = "DROP TABLE IF EXISTS filmes";
 
@@ -13,7 +13,8 @@ $sql = "CREATE TABLE filmes (
         titulo VARCHAR(200) NOT NULL,
         poster VARCHAR (200),
         sinopse TEXT,
-        nota DECIMAL(3,1)
+        nota DECIMAL(3,1),
+        favorito INT DEFAULT 0
     )
 ";
 
@@ -37,11 +38,12 @@ else
     echo "\nerro ao inserir filmes\n"; 
 
 
-    $sql = "INSERT INTO filmes (titulo, poster, sinopse, nota) VALUES (
+    $sql = "INSERT INTO filmes (titulo, poster, sinopse, nota, favorito) VALUES (
         'O Auto da Compadecida',
         'https://image.tmdb.org/t/p/w300/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg',
         'As aventuras de João Grilo (Matheus Natchergaele), um sertanejo pobre e mentiroso, e Chicó (Selton Mello), o mais covarde dos homens. Ambos lutam pelo pão de cada dia e atravessam por vários episódios enganando a todos da pequena cidade em que vivem.',
-        10.0
+        10.0,
+        1
     )";
 
 if ($bd->exec($sql)) 

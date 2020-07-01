@@ -17,4 +17,6 @@ class Filme{
     /** @var string $poster */
     public $poster;
 
+    /** @var int $favorito */
+    public $favorito;
 }

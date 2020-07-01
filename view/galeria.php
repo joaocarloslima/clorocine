@@ -1,13 +1,10 @@
-<?php include "cabecalho.php" ?>
+<?php 
 
-<?php
-session_start();
-
-require "./repository/FilmesRepositoryPDO.php";
+include "cabecalho.php";
 require "./util/Mensagem.php";
 
-$filmesRepository = new FilmesRepositoryPDO();
-$filmes = $filmesRepository->listarTodos();
+$controller = new FilmeController();
+$filmes = $controller->index();
 ?>
 
 <body>
@@ -39,9 +36,9 @@ $filmes = $filmesRepository->listarTodos();
           <div class="card hoverable">
             <div class="card-image">
               <img src="<?= $filme->poster ?>">
-              <a class="btn-floating halfway-fab waves-effect waves-light red">
-                <i class="material-icons">favorite_border</i>
-              </a>
+              <button class="btn-favorito btn-floating halfway-fab waves-effect waves-light red" data-id="<?= $filme->id ?>">
+                <i class="material-icons"><?= ($filme->favorito)? "favorite" : "favorite_border"?></i>
+              </button>
             </div>
             <div class="card-content">
               <p class="valign-wrapper">
@@ -62,6 +59,30 @@ $filmes = $filmesRepository->listarTodos();
   </div>
 
   <?= Mensagem::mostrar(); ?>
+
+  <script>
+    document.querySelectorAll(".btn-favorito").forEach((btn)=>{
+      btn.addEventListener("click", async (e)=>{
+        const id = btn.getAttribute("data-id")
+        await fetch(`/favoritar/${id}`)
+        .then(response => response.json())
+        .then((response)=>{
+          if(response.sucesso){
+            if(btn.querySelector("i").innerHTML === "favorite"){
+              btn.querySelector("i").innerHTML = "favorite_border"
+            }else{
+              btn.querySelector("i").innerHTML = "favorite"
+            }
+          }
+        })
+        .catch( error => {
+          console.error('erro ao favoritar')
+        })
+      });
+    });
+
+   
+  </script>
 
 </body>
 
