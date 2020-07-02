@@ -2,12 +2,10 @@
 
 <?php
 session_start();
-
-require "./repository/FilmesRepositoryPDO.php";
 require "./util/Mensagem.php";
 
-$filmesRepository = new FilmesRepositoryPDO();
-$filmes = $filmesRepository->listarTodos();
+$controller = new FilmesController();
+$filmes = $controller->index();
 ?>
 
 <body>
