@@ -44,4 +44,11 @@ class FilmesController{
         return $posterPath;
 
     }
+
+    public function favorite(int $id){
+        $filmesRepository = new FilmesRepositoryPDO();
+        $result = ['success' => $filmesRepository->favoritar($id)];
+        header('Content-type: application/json');
+        echo json_encode($result);
+    }
 }
