@@ -2,6 +2,19 @@
 
 class Conexao{
     public static function criar():PDO{
-        return new PDO("sqlite:db/filmes.db");
+        $env = parse_ini_file('.env');
+        $connectionType = $env["connection"];
+        $server = $env["server"];
+        $database = $env["database"];
+        $user = $env["user"];
+        $pass = $env["pass"];
+
+        if ($connectionType === "mysql"){
+            $databaseURL = "host=$server;dbname=$database";
+        }else{
+            $databaseURL = $database;
+        }
+
+        return new PDO("$connectionType:$databaseURL", $user, $pass);
     }
 }
