@@ -7,7 +7,7 @@ class Conexao{
         $connectionType = $env["DBTYPE"];
         $server = $env["HOST"];
         $database = $env["DATABASE"];
-        $user = $env["USER"];
+        $user = $env["DBUSER"];
         $pass = $env["PASS"];
 
         if ($connectionType === "mysql"){
