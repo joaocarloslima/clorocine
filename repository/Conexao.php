@@ -2,12 +2,13 @@
 
 class Conexao{
     public static function criar():PDO{
-        $env = parse_ini_file('.env');
-        $connectionType = $env["connection"];
-        $server = $env["server"];
-        $database = $env["database"];
-        $user = $env["user"];
-        $pass = $env["pass"];
+        $env = (parse_ini_file('.env')) ? parse_ini_file('.env') : getenv();
+        
+        $connectionType = $env["DBTYPE"];
+        $server = $env["HOST"];
+        $database = $env["DATABASE"];
+        $user = $env["USER"];
+        $pass = $env["PASS"];
 
         if ($connectionType === "mysql"){
             $databaseURL = "host=$server;dbname=$database";

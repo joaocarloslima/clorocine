@@ -1,4 +1,2 @@
-.env-heroku
-.env-local
 .env
 *.db
