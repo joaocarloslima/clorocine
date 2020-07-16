@@ -53,7 +53,7 @@ $filmes = $controller->index();
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><?= $filme->titulo ?><i class="material-icons right">close</i></span>
               <p><?= substr($filme->sinopse, 0, 500) . "..." ?></p>
-              <a class="waves-effect waves-light btn-small right red accent-2"><i class="material-icons">delete</i></a>
+              <button class="waves-effect waves-light btn-small right red accent-2 btn-delete" data-id="<?= $filme->id ?>"><i class="material-icons">delete</i></button>
 
             </div>
           </div>
@@ -88,7 +88,27 @@ $filmes = $controller->index();
               html: 'Erro ao favoritar'
             })
           })
+      });
+    });
 
+    document.querySelectorAll(".btn-delete").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const id = btn.getAttribute("data-id")
+        const requestConfig = { method: "DELETE", headers: new Headers()}
+        fetch(`/filmes/${id}`, requestConfig)
+          .then(response => response.json())
+          .then(response => {
+            if (response.success === "ok") {
+              const card = btn.closest(".col")
+              card.classList.add("fadeOut")
+              setTimeout(() => card.remove(), 1000)
+            }
+          })
+          .catch(error => {
+            M.toast({
+              html: 'Erro ao favoritar'
+            })
+          })
       });
     });
   </script>

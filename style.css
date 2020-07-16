@@ -16,3 +16,8 @@ nav ul li.active, .tab a.active{
 .nav-header h1{
     text-shadow: 2px 2px 15px #000000;
 }
+
+.fadeOut{
+    opacity: 0;
+    transition: 1s;
+}
